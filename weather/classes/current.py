@@ -1,4 +1,3 @@
-import json
 from datetime import datetime as dt
 
 from .subclasses import Condition, Location, AirQuality
