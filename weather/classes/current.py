@@ -14,9 +14,12 @@ class Current:
         :type data: dict
         """
         
-        current = data["current"]
-        
-        self.location = Location(data["location"])
+        try:
+            current = data["current"]
+        except KeyError:
+            current = data
+        else:
+            self.location = Location(data["location"])
         
         self.last_updated_epoch = current["last_updated_epoch"]
         self.last_updated = dt.strptime(current["last_updated"], "%Y-%m-%d %H:%M")
