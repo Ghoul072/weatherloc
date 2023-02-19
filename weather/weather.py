@@ -143,3 +143,15 @@ class Client:
         day = day.strftime("%Y-%m-%d")
         data = self.__send_get_request(f"{self.__baseuri}astronomy.json?key={self.__secret}&query={query}&dt={day}")
         return Astronomy(data)
+    
+    def timezone(self, query: str) -> Location:
+        """
+        Check location and timezone
+
+        :param query: Query parameter. Allowed types: (Latitude and Longitude, City/Country name, US Zip code, UK Postcode, Canada Postal Code, Metar Code, Iata 3 digit airport code, IP address)
+        :type query: str
+        :return: Location object
+        :rtype: Location
+        """
+        data = self.__send_get_request(f"{self.__baseuri}timezone.json?key={self.__secret}&query={query}")
+        return Location(data["location"])
