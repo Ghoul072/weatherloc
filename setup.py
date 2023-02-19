@@ -21,7 +21,7 @@ setup(
     long_description_content_type="text/markdown",
     long_description=long_description,
     packages=find_packages(),
-    install_requires=[],
+    install_requires=["requests"],
     keywords=['python', 'weather', 'geolocation', 'meteorology', 'api', 'weatherapi'],
     classifiers=[
         "Development Status :: 1 - Planning",
