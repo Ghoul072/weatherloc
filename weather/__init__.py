@@ -1,2 +1,2 @@
 from .weather import Client
-from . import modules
+from . import classes
