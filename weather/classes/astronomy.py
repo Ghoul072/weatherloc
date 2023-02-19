@@ -8,7 +8,7 @@ class Astronomy(Astro):
         """
         Constructor class
 
-        :param data: Dict of data to be parsed
+        :param data: Dict of data to be parsed. Must be a result from http://api.weatherapi.com/v1/astronomy.json
         :type data: dict
         """
         super().__init__(data["astronomy"]["astro"])
