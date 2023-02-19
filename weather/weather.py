@@ -33,7 +33,13 @@ class Client:
         :rtype: dict
         """
         data = requests.get(url).json()
-        return data
+        try:
+            error = data["error"]
+        except KeyError:
+            return data
+        else:
+            # ToDo: Add a function to handle errors properly
+            raise ValueError(error['message'])
                 
     def current(self, query: str, aqi: bool = False) -> Current:
         """
