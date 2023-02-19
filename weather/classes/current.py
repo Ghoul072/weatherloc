@@ -53,4 +53,3 @@ class Current:
         self.gust_mph = current["gust_mph"]
         self.gust_kph = current["gust_kph"]
         
-        
