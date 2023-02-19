@@ -2,7 +2,7 @@ import requests
 from datetime import date
 from datetime import datetime as dt
 
-from .classes import Current, Forecast, Astronomy, autocomplete
+from .classes import Current, Forecast, Astronomy, Sports, autocomplete
 from .classes.subclasses import Location
 
 
@@ -155,3 +155,16 @@ class Client:
         """
         data = self.__send_get_request(f"{self.__baseuri}timezone.json?key={self.__secret}&query={query}")
         return Location(data["location"])
+    
+    def sports(self, query: str) -> Sports:
+        """
+        Get listing of all upcoming sports events for football, cricket and golf.
+
+        :param query: Query parameter. Allowed types: (Latitude and Longitude, City/Country name, US Zip code, UK Postcode, Canada Postal Code, Metar Code, Iata 3 digit airport code, IP address)
+        :type query: str
+        :return: Sports object
+        :rtype: Sports
+        """
+        data = self.__send_get_request(f"{self.__baseuri}sports.json?key={self.__secret}&query={query}")
+        return Sports(data)
+        
