@@ -2,7 +2,7 @@ import requests
 from datetime import date
 from datetime import datetime as dt
 
-from .classes import Current, Forecast, autocomplete
+from .classes import Current, Forecast, Astronomy, autocomplete
 from .classes.subclasses import Location
 
 
@@ -73,7 +73,35 @@ class Client:
         return autocomplete(data)
     
     def future(self, query: str, day: str | date) -> Forecast:
-        """_summary_
+        """
+        Checked predicted weather in a future date, max 300 days from now
+
+        :param query: Query parameter. Allowed types: (Latitude and Longitude, City/Country name, US Zip code, UK Postcode, Canada Postal Code, Metar Code, Iata 3 digit airport code, IP address)
+        :type query: str
+        :param day: Any date upto 300 days in the future. Encouraged formats DD-MM-YYY and YYYY-MM-DD. Other formats may yield unexpected results
+        :type day: str | date
+        :raises ValueError: If date provided in an unrecognised format or day is more than 300 days from now
+        :return: An instance of Forecast
+        :rtype: Forecast
+        """
+        if type(day) == str:
+            formats = ("%d-%m-%Y", "%Y-%m-%d", "%m-%d-%Y", "%Y-%d-%m")
+            for format in formats:
+                try:
+                    day = dt.strptime(day, format)
+                except:
+                    pass
+                else:
+                    break
+            else:
+                raise ValueError("Day must be in format YYYY-MM-DD or provided as a `datetime.date` object")
+        day = day.strftime("%Y-%m-%d")
+        data = requests.get(f"{self.__baseuri}future.json?key={self.__secret}&query={query}&dt={day}").json()
+        return Forecast(data)
+    
+    def astronomy(self, query: str, day: str | date) -> Astronomy:
+        """
+        Get up-to-date information for sunrise, sunset, moonrise, moonset, and moon phase
 
         :param query: Query parameter. Allowed types: (Latitude and Longitude, City/Country name, US Zip code, UK Postcode, Canada Postal Code, Metar Code, Iata 3 digit airport code, IP address)
         :type query: str
@@ -95,5 +123,5 @@ class Client:
             else:
                 raise ValueError("Day must be in format YYYY-MM-DD or provided as a `datetime.date` object")
         day = day.strftime("%Y-%m-%d")
-        data = requests.get(f"{self.__baseuri}future.json?key={self.__secret}&query={query}&dt={day}").json()
-        return Forecast(data)
+        data = requests.get(f"{self.__baseuri}astronomy.json?key={self.__secret}&query={query}&dt={day}").json()
+        return Astronomy(data)
