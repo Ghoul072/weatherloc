@@ -2,8 +2,8 @@ import requests
 from datetime import date
 from datetime import datetime as dt
 
-from .classes import Current, Forecast, Astronomy, Sports, autocomplete
-from .classes.subclasses import Location
+from .commands import Current, Forecast, Astronomy, Sports, autocomplete
+from .commands.models import Location
 
 
 class Client:

@@ -1,6 +1,6 @@
 from datetime import datetime as dt
 
-from .subclasses import Condition, Location, AirQuality
+from .models import Condition, Location, AirQuality
 
 class Current:
     """

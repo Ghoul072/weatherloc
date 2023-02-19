@@ -1,4 +1,4 @@
-from .subclasses import Astro, Location
+from .models import Astro, Location
 
 class Astronomy(Astro):
     """

@@ -1,7 +1,7 @@
 from datetime import datetime as dt
 
 from . import Current
-from .subclasses import Location, Day, Astro, Hour
+from .models import Location, Day, Astro, Hour
 
 
 class ForecastDay:
