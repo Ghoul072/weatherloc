@@ -9,12 +9,6 @@ class Client:
     
     :param secret: API secret key. Get yours at https://www.weatherapi.com/my/
     :type id: str
-        
-    :ivar __secret: API secret key.
-    :vartype __secret: str
-    
-    :cvar __baseuri: Base URL for the API.
-    :vartype __baseuri: str
     """
     def __init__(self, secret: str) -> None:
         """
