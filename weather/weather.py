@@ -59,6 +59,14 @@ class Client:
         return Forecast(data)
     
     def search(self, query: str) -> list[Location]:
+        """
+        Searches for a given location
+
+        :param query: Location or IP address to search for
+        :type query: str
+        :return: list of Location objects
+        :rtype: list[Location]
+        """
         data = requests.get(f"{self.__baseuri}search.json?key={self.__secret}&query={query}").json()
         return autocomplete(data)
         
