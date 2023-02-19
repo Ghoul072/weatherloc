@@ -24,16 +24,26 @@ class Day:
         
         self.totalprecip_mm = data["totalprecip_mm"]
         self.totalprecip_in = data["totalprecip_in"]
-        self.totalsnow_cm = data["totalsnow_cm"]
+        
+        try:
+            self.totalsnow_cm = data["totalsnow_cm"]
+        except KeyError:
+            self.totalsnow_cm = None
         
         self.avgvisibility_km = data["avgvis_km"]
         self.avgvisibility_miles = data["avgvis_miles"]
         self.avghumidity = data["avghumidity"]
         
-        self.will_it_rain = bool(data["daily_will_it_rain"])
-        self.chance_of_rain = data["daily_chance_of_rain"]/100
-        self.will_it_snow = bool(data["daily_will_it_snow"])
-        self.chance_of_snow = data["daily_chance_of_snow"]/100
+        try:
+            self.will_it_rain = bool(data["daily_will_it_rain"])
+            self.chance_of_rain = data["daily_chance_of_rain"]/100
+            self.will_it_snow = bool(data["daily_will_it_snow"])
+            self.chance_of_snow = data["daily_chance_of_snow"]/100
+        except KeyError:
+            self.will_it_rain = None
+            self.chance_of_rain = None
+            self.will_it_snow = None
+            self.chance_of_snow = None
         
         self.condition = Condition(data["condition"])
         

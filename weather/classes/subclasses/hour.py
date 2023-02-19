@@ -50,7 +50,10 @@ class Hour:
         self.visibility_km = data["vis_km"]
         self.visibility_miles = data["vis_miles"]
         
-        self.uv = data["uv"]
+        try:
+            self.uv = data["uv"]
+        except KeyError:
+            self.uv = None
         
         self.gust_mph = data["gust_mph"]
         self.gust_kph = data["gust_kph"]

@@ -1,4 +1,6 @@
 import requests
+from datetime import date
+from datetime import datetime as dt
 
 from .classes import Current, Forecast, autocomplete
 from .classes.subclasses import Location
@@ -69,4 +71,29 @@ class Client:
         """
         data = requests.get(f"{self.__baseuri}search.json?key={self.__secret}&query={query}").json()
         return autocomplete(data)
-        
+    
+    def future(self, query: str, day: str | date) -> Forecast:
+        """_summary_
+
+        :param query: Query parameter. Allowed types: (Latitude and Longitude, City/Country name, US Zip code, UK Postcode, Canada Postal Code, Metar Code, Iata 3 digit airport code, IP address)
+        :type query: str
+        :param day: Any date upto 300 days in the future. Encouraged formats DD-MM-YYY and YYYY-MM-DD. Other formats may yield unexpected results
+        :type day: str | date
+        :raises ValueError: If date provided in an unrecognised format
+        :return: An instance of Forecast
+        :rtype: Forecast
+        """
+        if type(day) == str:
+            formats = ("%d-%m-%Y", "%Y-%m-%d", "%m-%d-%Y", "%Y-%d-%m")
+            for format in formats:
+                try:
+                    day = dt.strptime(day, format)
+                except:
+                    pass
+                else:
+                    break
+            else:
+                raise ValueError("Day must be in format YYYY-MM-DD or provided as a `datetime.date` object")
+        day = day.strftime("%Y-%m-%d")
+        data = requests.get(f"{self.__baseuri}future.json?key={self.__secret}&query={query}&dt={day}").json()
+        return Forecast(data)

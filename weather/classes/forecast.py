@@ -35,7 +35,13 @@ class Forecast:
         """
         
         self.location = Location(data["location"])
-        self.current = Current(data["current"])
+        
+        try:
+            current = data["current"]
+        except KeyError:
+            pass
+        else:
+            self.current = Current(current)
         
         forecast = data["forecast"]
         self.forecast = [ForecastDay(day) for day in forecast["forecastday"]]
