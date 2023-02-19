@@ -1,6 +1,6 @@
 import requests
 
-from .classes import Current, Forecast
+from .classes import Current, Forecast, History
 
 
 class Client:
@@ -30,14 +30,28 @@ class Client:
         :param aqi: Include air quality data, defaults to False
         :type aqi: bool, optional
         
-        :return: An instance of class `weather.modules.current.Current` which represents current weater condition
+        :return: An instance of Current
         :rtype: Current
         """
         aqi = "yes"  if aqi else "no"
         data = requests.get(f"{self.__baseuri}current.json?key={self.__secret}&q={query}&aqi={aqi}").json()
         return Current(data)
 
-    def forecast(self, query: str, days: int = 1, aqi: bool = False, alerts: bool = False):
+    def forecast(self, query: str, days: int = 1, aqi: bool = False, alerts: bool = False) -> Forecast:
+        """
+        Request weather forecast
+
+        :param query: Query parameter. Allowed types: (Latitude and Longitude, City/Country name, US Zip code, UK Postcode, Canada Postal Code, Metar Code, Iata 3 digit airport code, IP address)
+        :type query: str
+        :param days: Number of days to fetch forecast for, defaults to 1
+        :type days: int, optional
+        :param aqi: Include air quality data, defaults to False
+        :type aqi: bool, optional
+        :param alerts: Include alerts, defaults to False
+        :type alerts: bool, optional
+        :return: An instance of Forecast
+        :rtype: Forecast
+        """
         aqi = "yes"  if aqi else "no"
         alerts = "yes"  if alerts else "no"
         data = requests.get(f"{self.__baseuri}forecast.json?key={self.__secret}&query={query}&days={days}&aqi={aqi}&alerts={alerts}").json()
