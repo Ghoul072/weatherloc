@@ -1,15 +1,15 @@
 import json
 from datetime import datetime as dt
 
-from .subclasses import Condition, Location
+from .subclasses import Condition, Location, AirQuality
 
 class Current:
     """
-    Class representing an instance of current weather condition
+    Represents an instance of current weather condition
     """
     def __init__(self, data: dict) -> None:
         """
-        Class representing an instance of current weather condition
+        Represents an instance of current weather condition
 
         :param data: Dict of data to be parsed. Must be a result from http://api.weatherapi.com/v1/current.json
         :type data: dict
@@ -52,4 +52,11 @@ class Current:
         
         self.gust_mph = current["gust_mph"]
         self.gust_kph = current["gust_kph"]
+        
+        try:
+            aqi = data["air_quality"]
+        except KeyError:
+            self.air_quality = None
+        else:
+            self.air_quality = AirQuality(aqi)
         
