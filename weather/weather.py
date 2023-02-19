@@ -23,6 +23,18 @@ class Client:
         self.__secret = secret                              #: API secret ket
         self.__baseuri = "http://api.weatherapi.com/v1/"    #: Base URL for the API
         
+    def __send_get_request(self, url: str) -> dict:
+        """
+        Send a get request and retrieve json data. Checks if returned data is an error before passing back
+
+        :param url: url to send get request to
+        :type url: str
+        :return: json data received from get request
+        :rtype: dict
+        """
+        data = requests.get(url).json()
+        return data
+                
     def current(self, query: str, aqi: bool = False) -> Current:
         """
         Request current weather
@@ -37,7 +49,7 @@ class Client:
         :rtype: Current
         """
         aqi = "yes"  if aqi else "no"
-        data = requests.get(f"{self.__baseuri}current.json?key={self.__secret}&q={query}&aqi={aqi}").json()
+        data = self.__send_get_request(f"{self.__baseuri}current.json?key={self.__secret}&q={query}&aqi={aqi}")
         return Current(data)
 
     def forecast(self, query: str, days: int = 1, aqi: bool = False, alerts: bool = False) -> Forecast:
@@ -57,7 +69,7 @@ class Client:
         """
         aqi = "yes"  if aqi else "no"
         alerts = "yes"  if alerts else "no"
-        data = requests.get(f"{self.__baseuri}forecast.json?key={self.__secret}&query={query}&days={days}&aqi={aqi}&alerts={alerts}").json()
+        data = self.__send_get_request(f"{self.__baseuri}forecast.json?key={self.__secret}&query={query}&days={days}&aqi={aqi}&alerts={alerts}")
         return Forecast(data)
     
     def search(self, query: str) -> list[Location]:
@@ -69,7 +81,7 @@ class Client:
         :return: list of Location objects
         :rtype: list[Location]
         """
-        data = requests.get(f"{self.__baseuri}search.json?key={self.__secret}&query={query}").json()
+        data = self.__send_get_request(f"{self.__baseuri}search.json?key={self.__secret}&query={query}")
         return autocomplete(data)
     
     def future(self, query: str, day: str | date) -> Forecast:
@@ -96,7 +108,7 @@ class Client:
             else:
                 raise ValueError("Day must be in format YYYY-MM-DD or provided as a `datetime.date` object")
         day = day.strftime("%Y-%m-%d")
-        data = requests.get(f"{self.__baseuri}future.json?key={self.__secret}&query={query}&dt={day}").json()
+        data = self.__send_get_request(f"{self.__baseuri}future.json?key={self.__secret}&query={query}&dt={day}")
         return Forecast(data)
     
     def astronomy(self, query: str, day: str | date) -> Astronomy:
@@ -123,5 +135,5 @@ class Client:
             else:
                 raise ValueError("Day must be in format YYYY-MM-DD or provided as a `datetime.date` object")
         day = day.strftime("%Y-%m-%d")
-        data = requests.get(f"{self.__baseuri}astronomy.json?key={self.__secret}&query={query}&dt={day}").json()
+        data = self.__send_get_request(f"{self.__baseuri}astronomy.json?key={self.__secret}&query={query}&dt={day}")
         return Astronomy(data)
