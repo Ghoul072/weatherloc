@@ -1,6 +1,7 @@
 import requests
 
-from .classes import Current, Forecast, History
+from .classes import Current, Forecast, autocomplete
+from .classes.subclasses import Location
 
 
 class Client:
@@ -56,4 +57,8 @@ class Client:
         alerts = "yes"  if alerts else "no"
         data = requests.get(f"{self.__baseuri}forecast.json?key={self.__secret}&query={query}&days={days}&aqi={aqi}&alerts={alerts}").json()
         return Forecast(data)
+    
+    def search(self, query: str) -> list[Location]:
+        data = requests.get(f"{self.__baseuri}search.json?key={self.__secret}&query={query}").json()
+        return autocomplete(data)
         

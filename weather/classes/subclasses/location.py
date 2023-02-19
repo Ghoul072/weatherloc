@@ -16,6 +16,11 @@ class Location:
         self.latitude = self.lat
         self.long = data["lon"]
         self.longitude = self.long
-        self.timezone_id = data["tz_id"]
-        self.localtime_epoch = data["localtime_epoch"]
-        self.localtime = dt.strptime(data["localtime"], "%Y-%m-%d %H:%M")
+        try:
+            self.timezone_id = data["tz_id"]
+            self.localtime_epoch = data["localtime_epoch"]
+            self.localtime = dt.strptime(data["localtime"], "%Y-%m-%d %H:%M")
+        except KeyError:
+            self.timezone_id = None
+            self.localtime_epoch = None
+            self.localtime = None
