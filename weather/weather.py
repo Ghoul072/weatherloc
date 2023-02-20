@@ -2,7 +2,7 @@ import requests
 from datetime import date
 from datetime import datetime as dt
 
-from .commands import Current, Forecast, Astronomy, Sports, autocomplete
+from .commands import Current, Forecast, Astronomy, Sports, LookupIP, autocomplete
 from .commands.models import Location
 
 from .commands import errors
@@ -197,3 +197,15 @@ class Client:
         """
         data = self.__send_get_request(f"{self.__baseuri}sports.json?key={self.__secret}&query={query}")
         return Sports(data)
+    
+    def ip_lookup(self, ip_addr: str) -> LookupIP:
+        """
+        Get up-to-date information for an IP address
+
+        :param ip_addr: IP Address
+        :type ip_addr: str
+        :return: An instance of :class:`~weather.commands.ip_lookup.LookupIP`
+        :rtype: LookupIP
+        """
+        data = self.__send_get_request(f"{self.__baseuri}ip.json?key={self.__secret}&q={ip_addr}")
+        return LookupIP(data)
