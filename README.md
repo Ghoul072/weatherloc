@@ -13,7 +13,11 @@ Use [pip](https://pip.pypa.io/en/stable/) package manager to install PyWeather.
 pip install pyweather
 ``` -->
 ## Installation
-For the time being you can use this package by simply downloading the pyweather folder and keeping it in the same folder as your project, but I'll soon be uploading this to PyPI and upload documentation on readthedocs as well
+
+WeatherAPI is available on [PyPI](https://pypi.org/) and can be installed by running the below command:
+```
+pip install weatherapi
+```
 
 
 ## Usage

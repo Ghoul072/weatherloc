@@ -13,7 +13,7 @@ LONG_DESCRIPTION = 'Pythonic API for weather and geolocation. Powered by www.wea
 
 # Setting up
 setup(
-    name="WeatherAPI",
+    name="pyweather",
     version=VERSION,
     author="Yaseen",
     author_email="<ahm3d.yaseen@gmail.com>",
