@@ -13,7 +13,7 @@ LONG_DESCRIPTION = 'Pythonic API for weather and geolocation. Powered by www.wea
 
 # Setting up
 setup(
-    name="pyweather",
+    name="WeatherAPI",
     version=VERSION,
     author="Yaseen",
     author_email="<ahm3d.yaseen@gmail.com>",
@@ -23,7 +23,7 @@ setup(
     long_description=long_description,
     packages=find_packages(),
     install_requires=["requests"],
-    keywords=['pyweather', 'python', 'weather', 'geolocation', 'meteorology', 'api', 'weatherapi'],
+    keywords=['pyweather', 'python', 'weather', 'geolocation', 'meteorology', 'api', 'weatherapi', 'pyweather', 'python-weather', 'science'],
     classifiers=[
         "Development Status :: 3 - Alpha Copy",
         "Intended Audience :: Developers",
