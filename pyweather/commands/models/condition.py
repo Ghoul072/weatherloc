@@ -13,3 +13,6 @@ class Condition:
         self.icon = data["icon"]    #: Image representation of weather condition
         self.code = data["code"]    #: Weather code used by the API
         
+    def __str__(self) -> str:
+        return self.text
+        
