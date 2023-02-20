@@ -10,8 +10,8 @@ class WeatherBaseException(BaseException):
         :type message: str
         """
         super().__init__(*args)
-        self.code = code
-        self.message = message
+        self.code = code            #: Error code returned by the API
+        self.message = message      #: Error message
         
     def __str__(self) -> str:
         """
