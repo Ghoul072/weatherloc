@@ -25,7 +25,7 @@ setup(
     install_requires=["requests"],
     keywords=['pyweather', 'python', 'weather', 'geolocation', 'meteorology', 'api', 'weatherapi', 'pyweather', 'python-weather', 'science'],
     classifiers=[
-        "Development Status :: 3 - Alpha Copy",
+        "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
         "Intended Audience :: Education",
         "Intended Audience :: Science/Research",
