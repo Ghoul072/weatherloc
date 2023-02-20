@@ -81,7 +81,7 @@ class Client:
         :param aqi: Include air quality data, defaults to False
         :type aqi: bool, optional
         
-        :return: An instance of Current
+        :return: An instance of :class:`~weather.commands.current.Current`
         :rtype: Current
         """
         aqi = "yes"  if aqi else "no"
@@ -100,7 +100,7 @@ class Client:
         :type aqi: bool, optional
         :param alerts: Include alerts, defaults to False
         :type alerts: bool, optional
-        :return: An instance of Forecast
+        :return: An instance of :class:`~weather.commands.forecast.Forecast`
         :rtype: Forecast
         """
         aqi = "yes"  if aqi else "no"
@@ -114,7 +114,7 @@ class Client:
 
         :param query: Location or IP address to search for
         :type query: str
-        :return: list of Location objects
+        :return: list of :class:`~weather.commands.models.location.Location` objects
         :rtype: list[Location]
         """
         data = self.__send_get_request(f"{self.__baseuri}search.json?key={self.__secret}&query={query}")
@@ -129,7 +129,7 @@ class Client:
         :param day: Any date upto 300 days in the future. Encouraged formats DD-MM-YYY and YYYY-MM-DD. Other formats may yield unexpected results
         :type day: str | date
         :raises ValueError: If date provided in an unrecognised format or day is more than 300 days from now
-        :return: An instance of Forecast
+        :return: An instance of :class:`~weather.commands.forecast.Forecast`
         :rtype: Forecast
         """
         if type(day) == str:
@@ -156,8 +156,8 @@ class Client:
         :param day: Any date upto 300 days in the future. Encouraged formats DD-MM-YYY and YYYY-MM-DD. Other formats may yield unexpected results. Defaults to current date
         :type day: str | date, optional
         :raises ValueError: If date provided in an unrecognised format
-        :return: An instance of Forecast
-        :rtype: Forecast
+        :return: An instance of :class:`~weather.commands.astronomy.Astronomy`
+        :rtype: Astronomy
         """
         if type(day) == str:
             formats = ("%d-%m-%Y", "%Y-%m-%d", "%m-%d-%Y", "%Y-%d-%m")
@@ -180,7 +180,7 @@ class Client:
 
         :param query: Query parameter. Allowed types: (Latitude and Longitude, City/Country name, US Zip code, UK Postcode, Canada Postal Code, Metar Code, Iata 3 digit airport code, IP address)
         :type query: str
-        :return: Location object
+        :return: An instance of :class:`~weather.commands.models.location.Location`
         :rtype: Location
         """
         data = self.__send_get_request(f"{self.__baseuri}timezone.json?key={self.__secret}&query={query}")
@@ -192,9 +192,8 @@ class Client:
 
         :param query: Query parameter. Allowed types: (Latitude and Longitude, City/Country name, US Zip code, UK Postcode, Canada Postal Code, Metar Code, Iata 3 digit airport code, IP address)
         :type query: str
-        :return: Sports object
+        :return: An instance of :class:`~weather.commands.sports.Sports`
         :rtype: Sports
         """
         data = self.__send_get_request(f"{self.__baseuri}sports.json?key={self.__secret}&query={query}")
         return Sports(data)
-        
