@@ -1,6 +1,6 @@
 from datetime import datetime as dt
 
-from .models import Astro, Location
+from .models import Location
 
 class Astronomy:
     """
