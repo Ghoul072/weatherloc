@@ -1,2 +1,2 @@
-from .weatherapi import Client
+from .pyweather import Client
 from . import commands
