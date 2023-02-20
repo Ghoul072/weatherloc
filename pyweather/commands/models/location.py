@@ -29,3 +29,6 @@ class Location:
             self.timezone_id = None
             self.localtime_epoch = None
             self.localtime = None
+            
+    def __str__(self) -> str:
+        return self.name
