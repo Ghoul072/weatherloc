@@ -28,7 +28,6 @@ sphinx-material==0.0.35
 sphinx-rtd-theme==1.2.0
 sphinxawesome-theme==3.3.7
 sphinxcontrib-devhelp==1.0.2
-sphinxcontrib-htmlhelp==2.0.1
 sphinxcontrib-jquery==2.0.0
 sphinxcontrib-jsmath==1.0.1
 sphinxcontrib-qthelp==1.0.3
