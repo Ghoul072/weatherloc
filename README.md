@@ -1,4 +1,4 @@
-# PyWeather Quickstart
+# PyWeather
 
 
 ## What is PyWeather
