@@ -147,14 +147,14 @@ class Client:
         data = self.__send_get_request(f"{self.__baseuri}future.json?key={self.__secret}&query={query}&dt={day}")
         return Forecast(data)
     
-    def astronomy(self, query: str, day: str | date) -> Astronomy:
+    def astronomy(self, query: str, day: str | date = dt.now()) -> Astronomy:
         """
         Get up-to-date information for sunrise, sunset, moonrise, moonset, and moon phase
 
         :param query: Query parameter. Allowed types: (Latitude and Longitude, City/Country name, US Zip code, UK Postcode, Canada Postal Code, Metar Code, Iata 3 digit airport code, IP address)
         :type query: str
-        :param day: Any date upto 300 days in the future. Encouraged formats DD-MM-YYY and YYYY-MM-DD. Other formats may yield unexpected results
-        :type day: str | date
+        :param day: Any date upto 300 days in the future. Encouraged formats DD-MM-YYY and YYYY-MM-DD. Other formats may yield unexpected results. Defaults to current date
+        :type day: str | date, optional
         :raises ValueError: If date provided in an unrecognised format
         :return: An instance of Forecast
         :rtype: Forecast
