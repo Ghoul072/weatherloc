@@ -88,7 +88,12 @@ class Client:
         data = self.__send_get_request(f"{self.__baseuri}current.json?key={self.__secret}&q={query}&aqi={aqi}")
         return Current(data)
 
-    def forecast(self, query: str, days: int = 1, aqi: bool = False, alerts: bool = False) -> Forecast:
+    #ToDo: Add alerts
+    """
+    :param alerts: Include alerts, defaults to False
+    :type alerts: bool, optional
+    """
+    def forecast(self, query: str, days: int = 1, aqi: bool = False) -> Forecast:
         """
         Request weather forecast
 
@@ -98,8 +103,6 @@ class Client:
         :type days: int, optional
         :param aqi: Include air quality data, defaults to False
         :type aqi: bool, optional
-        :param alerts: Include alerts, defaults to False
-        :type alerts: bool, optional
         :return: An instance of :class:`~weather.commands.forecast.Forecast`
         :rtype: Forecast
         """
