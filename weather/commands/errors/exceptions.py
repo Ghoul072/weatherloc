@@ -23,10 +23,10 @@ class WeatherBaseException(BaseException):
         return f" Error {self.code}. {self.message}"
     
 class MissingAPIKey(WeatherBaseException):
-    """This exception is raised if API key is missing"""
+    """Derived from :class:`~weather.commands.errors.exceptions.WeatherBaseException`.This exception is raised if API key is missing"""
     def __init__(self, code: int, message: str, *args: object) -> None:
         """
-        This exception is raised if API key is missing
+        Derived from :class:`~weather.commands.errors.exceptions.WeatherBaseException`.This exception is raised if API key is missing
         
         :param code: Error code
         :type code: int
@@ -36,10 +36,10 @@ class MissingAPIKey(WeatherBaseException):
         super().__init__(code, message, *args)
         
 class LocationNotFound(WeatherBaseException):
-    """This exception is raised if an invalid location is passed"""
+    """Derived from :class:`~weather.commands.errors.exceptions.WeatherBaseException`.This exception is raised if an invalid location is passed"""
     def __init__(self, code: int, message: str, *args: object) -> None:
         """
-        This exception is raised if an invalid location is passed
+        Derived from :class:`~weather.commands.errors.exceptions.WeatherBaseException`.This exception is raised if an invalid location is passed
         
         :param code: Error code
         :type code: int
@@ -49,10 +49,10 @@ class LocationNotFound(WeatherBaseException):
         super().__init__(code, message, *args)
         
 class InvalidAPIKey(WeatherBaseException):
-    """This exception is raised if provided API key is invalid"""
+    """Derived from :class:`~weather.commands.errors.exceptions.WeatherBaseException`.This exception is raised if provided API key is invalid"""
     def __init__(self, code: int, message: str, *args: object) -> None:
         """
-        This exception is raised if provided API key is invalid
+        Derived from :class:`~weather.commands.errors.exceptions.WeatherBaseException`.This exception is raised if provided API key is invalid
         
         :param code: Error code
         :type code: int
@@ -62,10 +62,10 @@ class InvalidAPIKey(WeatherBaseException):
         super().__init__(code, message, *args)
         
 class LimitReached(WeatherBaseException):
-    """This exception is raised if API Key has reached query limit"""
+    """Derived from :class:`~weather.commands.errors.exceptions.WeatherBaseException`.This exception is raised if API Key has reached query limit"""
     def __init__(self, code: int, message: str, *args: object) -> None:
         """
-        This exception is raised if API Key has reached query limit
+        Derived from :class:`~weather.commands.errors.exceptions.WeatherBaseException`.This exception is raised if API Key has reached query limit
         
         :param code: Error code
         :type code: int
@@ -75,10 +75,10 @@ class LimitReached(WeatherBaseException):
         super().__init__(code, message, *args)
         
 class DisabledAPIKey(WeatherBaseException):
-    """This exception is raised if provided API key is disabled"""
+    """Derived from :class:`~weather.commands.errors.exceptions.WeatherBaseException`.This exception is raised if provided API key is disabled"""
     def __init__(self, code: int, message: str, *args: object) -> None:
         """
-        This exception is raised if provided API key is disabled
+        Derived from :class:`~weather.commands.errors.exceptions.WeatherBaseException`.This exception is raised if provided API key is disabled
         
         :param code: Error code
         :type code: int
@@ -88,10 +88,10 @@ class DisabledAPIKey(WeatherBaseException):
         super().__init__(code, message, *args)
         
 class PermissionDenied(WeatherBaseException):
-    """This exception is raised if the API key does not have permission for a certain query"""
+    """Derived from :class:`~weather.commands.errors.exceptions.WeatherBaseException`.This exception is raised if the API key does not have permission for a certain query"""
     def __init__(self, code: int, message: str, *args: object) -> None:
         """
-        This exception is raised if the API key does not have permission for a certain query
+        Derived from :class:`~weather.commands.errors.exceptions.WeatherBaseException`.This exception is raised if the API key does not have permission for a certain query
         
         :param code: Error code
         :type code: int
@@ -101,10 +101,10 @@ class PermissionDenied(WeatherBaseException):
         super().__init__(code, message, *args)
         
 class InternalError(WeatherBaseException):
-    """This exception is raised if there is an internal error in weatherapi server"""
+    """Derived from :class:`~weather.commands.errors.exceptions.WeatherBaseException`.This exception is raised if there is an internal error in weatherapi server"""
     def __init__(self, code: int, message: str, *args: object) -> None:
         """
-        This exception is raised if there is an internal error in weatherapi server
+        Derived from :class:`~weather.commands.errors.exceptions.WeatherBaseException`.This exception is raised if there is an internal error in weatherapi server
 
         :param code: Error code
         :type code: int
