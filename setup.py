@@ -17,7 +17,7 @@ setup(
     version=VERSION,
     author="Yaseen",
     author_email="<ahm3d.yaseen@gmail.com>",
-    url="https://github.com/Ghoul072/weather",
+    url="https://github.com/Ghoul072/pyweather",
     description=DESCRIPTION,
     long_description_content_type="text/markdown",
     long_description=long_description,
