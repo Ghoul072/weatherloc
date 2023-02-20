@@ -1,6 +1,5 @@
 from datetime import datetime as dt
 
-from . import Condition
 
 class Hour:
     """Represents weather condition for a single hour"""
