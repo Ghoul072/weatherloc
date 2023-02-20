@@ -150,7 +150,7 @@ class Client:
         data = self.__send_get_request(f"{self.__baseuri}future.json?key={self.__secret}&query={query}&dt={day}")
         return Forecast(data)
     
-    def astronomy(self, query: str, day: str | date = dt.now()) -> Astronomy:
+    def astronomy(self, query: str, day: str | date = dt.now().date()) -> Astronomy:
         """
         Get up-to-date information for sunrise, sunset, moonrise, moonset, and moon phase
 
