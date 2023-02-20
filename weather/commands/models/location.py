@@ -16,10 +16,10 @@ class Location:
             self.country = data["country"]                                      #: Location country
         except KeyError:
             self.country = self.name
-        self.lat = data["lat"]                                                  #: Latitude in decimal degree
-        self.latitude = self.lat                                                #: Alias for :var:`~weather.commands.models.location.Location.latitude`
-        self.long = data["lon"]                                                 #: Longitude in decimal degree
-        self.longitude = self.long                                              #: Alias for :var:`~weather.commands.models.location.Location.longitude`
+        self.latitude = self.lat                                                #: Latitude in decimal degree
+        self.lat = data["lat"]                                                  #: Alias for latitude
+        self.longitude = self.long                                              #: Longitude in decimal degree
+        self.long = data["lon"]                                                 #: Alias for longitude
         try:
             self.timezone_id = data["tz_id"]                                    #: Time zone name
             self.localtime_epoch = data["localtime_epoch"]                      #: Local date and time in unix time
