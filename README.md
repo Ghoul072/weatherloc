@@ -1,22 +1,15 @@
 # PyWeather
 
 
-## What is PyWeather
-PyWeather is a Pythonic API for weather and geolocation, powered by [WeatherAPI](https://www.weatherapi.com/)
+## What is pyweather
+pyweather is a Pythonic API for weather and geolocation, powered by [WeatherAPI](https://www.weatherapi.com/)
 
 
-<!-- ## Installation
-
-Use [pip](https://pip.pypa.io/en/stable/) package manager to install PyWeather.
-
-```bash
-pip install pyweather
-``` -->
 ## Installation
 
-WeatherAPI is available on [PyPI](https://pypi.org/) and can be installed by running the below command:
-```
-pip install weatherapi
+Use [pip](https://pip.pypa.io/en/stable/) package manager to install pyweather.
+```bash
+pip install pyweather
 ```
 
 
