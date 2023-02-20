@@ -33,7 +33,7 @@ class Forecast:
         :param data: Dict of data to be parsed. Must be a result from http://api.weatherapi.com/v1/forecast.json
         :type data: dict
         """
-        self.location = Location(data["location"])                              #: :class:`weather.commands.forecast.ForecastDay` object
+        self.location = Location(data["location"])                              #: :class:`~weather.commands.forecast.ForecastDay` object
         
         try:
             current = data["current"]
