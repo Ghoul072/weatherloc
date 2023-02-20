@@ -5,9 +5,10 @@ class Location:
     Represents a location object
     """
     def __init__(self, data: dict) -> None:
-        """_summary_
+        """
+        Represents a location object
 
-        :param data: _description_
+        :param data: Dict of data to be parsed
         :type data: dict
         """
         self.name = data["name"]                                                #: Location name
