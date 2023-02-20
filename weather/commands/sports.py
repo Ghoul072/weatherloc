@@ -20,15 +20,15 @@ class Activity:
 
 class Sports:
     """
-    Represents a container for sports, each sport has a list of Activity objects
+    Represents a container for sports, each sport has a list of :class:`~weather.commands.sports.Activity` objects
     """
     def __init__(self, data: dict) -> None:
         """
-        Represents a container for sports, each sport has a list of Activity objects
+        Represents a container for sports, each sport has a list of :class:`~weather.commands.sports.Activity` objects
 
         :param data: Dict of data to be parsed. Must be a result from http://api.weatherapi.com/v1/sports.json 
         :type data: dict
         """
-        self.football = [Activity(sport) for sport in data["football"]]
-        self.cricket = [Activity(sport) for sport in data["cricket"]]
-        self.golf = [Activity(sport) for sport in data["golf"]]
+        self.football = [Activity(sport) for sport in data["football"]]     #: Football results. This is a list of :class:`~weather.commands.sports.Activity` objects
+        self.cricket = [Activity(sport) for sport in data["cricket"]]       #: Cricket results. This is a list of :class:`~weather.commands.sports.Activity` objects
+        self.golf = [Activity(sport) for sport in data["golf"]]             #: Golf results. This is a list of :class:`~weather.commands.sports.Activity` objects
