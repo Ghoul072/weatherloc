@@ -19,46 +19,46 @@ class Current:
         except KeyError:
             current = data
         else:
-            self.location = Location(data["location"])
+            self.location = Location(data["location"])                              # :class:`~weather.commands.models.location.Location` object
         
-        self.last_updated_epoch = current["last_updated_epoch"]
-        self.last_updated = dt.strptime(current["last_updated"], "%Y-%m-%d %H:%M")
+        self.last_updated_epoch = current["last_updated_epoch"]                     #: Local time when the real time data was updated in unix time.
+        self.last_updated = dt.strptime(current["last_updated"], "%Y-%m-%d %H:%M")  #: Local time when the real time data was updated.
         
-        self.temp_c = current["temp_c"]
-        self.temp_f = current["temp_f"]
+        self.temp_c = current["temp_c"]                                             #: Temperature in celsius
+        self.temp_f = current["temp_f"]                                             #: Temperature in fahrenheit
         
-        self.is_day = bool(current["is_day"])
-        self.condition = Condition(current["condition"])
+        self.is_day = bool(current["is_day"])                                       #: Whether the current condition is day or night. True if day
+        self.condition = Condition(current["condition"])                            #: :class:`~weather.commands.models.condition.Condition` object
         
-        self.wind_mph = current["wind_mph"]
-        self.wind_kph = current["wind_kph"]
-        self.wind_degree = current["wind_degree"]
-        self.wind_direction = current["wind_dir"]
+        self.wind_mph = current["wind_mph"]                                         #: Wind speed in miles per hour
+        self.wind_kph = current["wind_kph"]                                         #: Wind speed in kilometer per hour
+        self.wind_degree = current["wind_degree"]                                   #: Wind direction in degrees
+        self.wind_direction = current["wind_dir"]                                   #: Wind direction as 16 point compass
         
-        self.pressure_mb = current["pressure_mb"]
-        self.pressure_in = current["pressure_in"]
+        self.pressure_mb = current["pressure_mb"]                                   #: Pressure in millibars
+        self.pressure_in = current["pressure_in"]                                   #: Pressure in inches
         
-        self.precip_mm = current["precip_mm"]
-        self.precip_in = current["precip_in"]
+        self.precip_mm = current["precip_mm"]                                       #: Precipitation amount in millimeters
+        self.precip_in = current["precip_in"]                                       #: Precipitation amount in inches
         
-        self.humidity = current["humidity"]
-        self.cloud = bool(current["cloud"])
+        self.humidity = current["humidity"] / 100                                   #: Humidity as a decimal (0-1 scale)
+        self.cloud = bool(current["cloud"]) / 100                                   #: Cloud cover as a decimal (0-1 scale)
         
-        self.feelslike_c = current["feelslike_c"]
-        self.feelslike_f = current["feelslike_f"]
+        self.feelslike_c = current["feelslike_c"]                                   #: Feels like temperature in celsius
+        self.feelslike_f = current["feelslike_f"]                                   #: Feels like temperature in fahrenheit
         
-        self.visibility_km = current["vis_km"]
-        self.visibility_miles = current["vis_miles"]
+        self.visibility_km = current["vis_km"]                                      #: Visibility in kilometer
+        self.visibility_miles = current["vis_miles"]                                #: Visibility in miles
         
-        self.uv = current["uv"]
+        self.uv = current["uv"]                                                     #: UV Index
         
-        self.gust_mph = current["gust_mph"]
-        self.gust_kph = current["gust_kph"]
+        self.gust_mph = current["gust_mph"]                                         #: Wind gust in miles per hour
+        self.gust_kph = current["gust_kph"]                                         #: Wind gust in kilometer per hour
         
         try:
             aqi = data["air_quality"]
         except KeyError:
             self.air_quality = None
         else:
-            self.air_quality = AirQuality(aqi)
+            self.air_quality = AirQuality(aqi)                                      #: :class:`~weather.commands.models.aqi.AirQuality` object
         
