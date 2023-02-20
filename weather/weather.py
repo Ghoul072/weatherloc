@@ -5,6 +5,8 @@ from datetime import datetime as dt
 from .commands import Current, Forecast, Astronomy, Sports, autocomplete
 from .commands.models import Location
 
+from .commands import errors
+
 
 class Client:
     """
@@ -26,9 +28,20 @@ class Client:
     def __send_get_request(self, url: str) -> dict:
         """
         Send a get request and retrieve json data. Checks if returned data is an error before passing back
+        
 
         :param url: url to send get request to
         :type url: str
+        
+        :raises errors.MissingAPIKey: If API key is not provided
+        :raises errors.LocationNotFound: If an unrecognised location is passed
+        :raises errors.InvalidAPIKey: If an invalid API key is provided
+        :raises errors.LimitReached: If API key has reached query limit
+        :raises errors.DisabledAPIKey: If API key is disabled
+        :raises errors.PermissionDenied: If API key lacks the permissions for a command
+        :raises errors.InternalError: If there is an internal error in weatherapi server
+        :raises ValueError: Handle for all unrecognised errors
+        
         :return: json data received from get request
         :rtype: dict
         """
@@ -38,9 +51,26 @@ class Client:
         except KeyError:
             return data
         else:
-            # ToDo: Add a function to handle errors properly
-            raise ValueError(error['message'])
-                
+            code = error["code"]
+            message = error["message"]
+            match code:
+                case 1002:
+                    raise errors.MissingAPIKey(code, message)
+                case 1006:
+                    raise errors.LocationNotFound(code, message)
+                case 2006:
+                    raise errors.InvalidAPIKey(code, message)
+                case 2007:
+                    raise errors.LimitReached(code, message)
+                case 2008:
+                    raise errors.DisabledAPIKey(code, message)
+                case 2009:
+                    raise errors.PermissionDenied(code, message)
+                case 9999:
+                    raise errors.InternalError(code, message)
+                case other:
+                    raise ValueError(f"Error {code}. {message}")
+                                
     def current(self, query: str, aqi: bool = False) -> Current:
         """
         Request current weather
