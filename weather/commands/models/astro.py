@@ -16,4 +16,4 @@ class Astro:
         self.moonrise = dt.strptime(data["moonrise"], "%I:%M %p").time()    #: Moonrise time as a datetime object
         self.moonset = dt.strptime(data["moonset"], "%I:%M %p").time()      #: Moonset time as a datetime object
         self.moon_phase = data["moon_phase"]                                #: Name of moon phase
-        self.moon_illumination = data["moon_illumination"] / 100            #: Moon illumination as a decimal (0-1)
+        self.moon_illumination = int(data["moon_illumination"]) / 100            #: Moon illumination as a decimal (0-1)
