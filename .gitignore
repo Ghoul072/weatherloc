@@ -130,6 +130,3 @@ dmypy.json
 
 # test modules during production
 test.py
-
-# ignore docs folder
-docs/
