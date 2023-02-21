@@ -42,6 +42,7 @@ print(my_ip.country_name)
 - IP lookup
 - Timezone search, get the timezone information for any region
 - Astronomical data including sunrise/sunset and moonrise/moonset time, moon phases, and illumination
+- Air quality data based on atmospheric gas concentrations and US Gebra and Uk Defra indexes
 
 
 
