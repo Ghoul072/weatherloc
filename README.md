@@ -7,7 +7,7 @@ WeatherLoc is a Pythonic API for weather and geolocation, powered by [WeatherAPI
 
 ## Installation
 
-Use [pip](https://pip.pypa.io/en/stable/) package manager to install WeatherLoc.
+[WeatherLoc](https://pypi.org/project/WeatherLoc/) is available on PyPI and can be installed via:
 ```bash
 pip install weatherloc
 ```
@@ -31,6 +31,18 @@ my_ip = client.ip_lookup("209.142.68.29")
 print(my_ip.country_name)
 
 ```
+
+
+
+## Features
+- Get current weather condition
+- Future weather predictions upto 300 days from present
+- Forecast for days and hours separetely
+- Search location by IP address, longitude and latitude, City/Country name, as well as Zip codes and Postcodes
+- IP lookup
+- Timezone search, get the timezone information for any region
+- Astronomical data including sunrise/sunset and moonrise/moonset time, moon phases, and illumination
+
 
 
 ## Contributing
