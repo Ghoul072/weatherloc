@@ -1,15 +1,15 @@
-# PyWeather
+# WeatherLoc
 
 
-## What is pyweather
-pyweather is a Pythonic API for weather and geolocation, powered by [WeatherAPI](https://www.weatherapi.com/)
+## What is WeatherLoc
+WeatherLoc is a Pythonic API for weather and geolocation, powered by [WeatherAPI](https://www.weatherapi.com/)
 
 
 ## Installation
 
-Use [pip](https://pip.pypa.io/en/stable/) package manager to install pyweather.
+Use [pip](https://pip.pypa.io/en/stable/) package manager to install WeatherLoc.
 ```bash
-pip install pyweather
+pip install weatherloc
 ```
 
 
@@ -18,10 +18,10 @@ pip install pyweather
 This package is designed to be as easy as possible to use. Simply create a client object using your API Key as shown below and all commands are available as methods under the newly created client object
 
 ```python
-import pyweather
+import weatherloc
 
 #create a PyWeather client using your API key from www.weatherapi.com
-client = pyweather.Client("YOUR_KEY_HERE")
+client = weatherloc.Client("YOUR_KEY_HERE")
 weather = client.current("London")  # checks and returns current weather
 print(weather.condition)            # print current weather condition
 print(weather.feelslike_c)          # print feelslike in celsius
