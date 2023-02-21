@@ -1,5 +1,5 @@
-pyweather package
-=================
+weatherloc package
+==================
 
 Subpackages
 -----------
@@ -7,15 +7,15 @@ Subpackages
 .. toctree::
    :maxdepth: 4
 
-   pyweather.commands
+   weatherloc.commands
 
 Submodules
 ----------
 
-pyweather.pyweather module
---------------------------
+weatherloc.weatherloc module
+----------------------------
 
-.. automodule:: pyweather.pyweather
+.. automodule:: weatherloc.weatherloc
    :members:
    :undoc-members:
    :show-inheritance:
@@ -23,7 +23,7 @@ pyweather.pyweather module
 Module contents
 ---------------
 
-.. automodule:: pyweather
+.. automodule:: weatherloc
    :members:
    :undoc-members:
    :show-inheritance:

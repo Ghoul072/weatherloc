@@ -1,7 +1,7 @@
-pyweather
-=========
+weatherloc
+==========
 
 .. toctree::
    :maxdepth: 4
 
-   pyweather
+   weatherloc
