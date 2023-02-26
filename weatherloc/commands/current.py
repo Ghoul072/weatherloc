@@ -56,7 +56,7 @@ class Current:
         self.gust_kph = current["gust_kph"]                                         #: Wind gust in kilometer per hour
         
         try:
-            aqi = data["air_quality"]
+            aqi = current["air_quality"]
         except KeyError:
             self.air_quality = None
         else:
