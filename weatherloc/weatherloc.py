@@ -93,7 +93,7 @@ class Client:
     :param alerts: Include alerts, defaults to False
     :type alerts: bool, optional
     """
-    def forecast(self, query: str, days: int = 1, aqi: bool = False) -> Forecast:
+    def forecast(self, query: str, days: int = 1, aqi: bool = False, alerts: bool = False) -> Forecast:
         """
         Request weather forecast
 
